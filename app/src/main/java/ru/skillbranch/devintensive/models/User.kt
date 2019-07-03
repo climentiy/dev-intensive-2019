@@ -13,4 +13,23 @@ data class User (
     var isOnline : Boolean = false
 ) {
 
+    constructor(id: String, firstName: String?, lastName: String?): this(
+        id = id,
+        firstName = firstName,
+        lastName = lastName,
+        avatar = null
+    )
+
+    companion object Factory {
+        private var lastId: Int = -1
+        fun makeUser(fullName:String) : User{
+            lastId++
+
+            val parts : List<String>? = fullName?.split(delimiters = *arrayOf(" "))
+
+            val firstName = parts?.getOrNull( index = 0)
+            val lastName = parts?.getOrNull( index = 1)
+            return User(id = "$lastId", firstName = firstName,lastName = lastName )
+        }
+    }
 }
