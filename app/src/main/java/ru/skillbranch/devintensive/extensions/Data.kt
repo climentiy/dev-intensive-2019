@@ -1,6 +1,5 @@
 package ru.skillbranch.devintensive.extensions
 
-import java.lang.IllegalStateException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,7 +21,6 @@ fun Date.add(value:Int, units: TimeUnits = TimeUnits.SECOND) : Date {
         TimeUnits.MINUTE -> value * MINUTE
         TimeUnits.HOUR -> value * HOUR
         TimeUnits.DAY -> value * DAY
-        else -> throw IllegalStateException("invalid units")
     }
     this.time = time
     return this
